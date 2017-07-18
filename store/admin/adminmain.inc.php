@@ -19,7 +19,7 @@ else{
 	echo "No messages today<br>";
 
 }
-echo "<h3>Products currently on sale:</h3>";
+echo "<h3 >Products currently on sale:</h3>";
 $query = "SELECT prodid, description, price, quantity FROM products WHERE onsale = 1";
 $result = mysqli_query($dbc, $query);
 while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)){
@@ -29,7 +29,7 @@ while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)){
 	$quantity = $row['quantity'];
 	printf("<a href='admin.php?content=updateproduct&id=$prodid'>%s</a>   - $%.2lf",$description,$price);
 	if($quantity ==0){
-		echo "<style='color:#cc0000;'>OUT OF STOCK</style><br>";
+		echo "<span style='color:#cc0000'> &nbsp; &nbsp; &nbsp;OUT OF STOCK</span><br>";
 		echo "<br>";
 	}
 }

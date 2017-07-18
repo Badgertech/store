@@ -1,32 +1,34 @@
 <?php
-include "../mylibrary/login.php";
 if(!isset($_SESSION['store_admin'])){
 	echo "<h2>Sorry, you have to be logged in to do that.</h2><hr>";
-	echo "<a ref='admin.php'>Try Again</a>";
+	echo "<a ref='admin.php'>Please Logon</a>";
 }else{
+	$userid = $_SESSION['store_admin'];
 	echo "<h2>Add a new Product</h2><hr>";
-	echo "<form action='admin.php' method='post'>";
-		echo "<label>Category: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name='cat'><option>Select</option>";
+	echo "<table style='width:100%; cellpadding:1;>";
+	echo "<form echtype='mulipart/form-data' action='admin.php' method='post'>";
+	echo "<tr><th align='left'>Category:</th><td align='left'><select name='cat'><option>Select</option>";
+	$query = "SELECT catid, name FROM categories ORDER BY name ASC";
+	$result = mysqli_query($dbc, $query) or die(mysqli_error());
+	while($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+	{
+		$catid = $row['catid'];
+		$name = $row['name'];
+		echo "<option value='$catid'>$name</option>";
+	}
+	echo "</select></td></tr>";
+	echo "<tr><th align='left'>Description:</th><td align='left'><input type='text' name='description' size='40'></td></tr>";
+	echo "<tr><th align='left'>Price: </th><td align='left'><input type='text' name='price' size='10'></td></tr>";
+	echo "<tr><th align='left'>Quantity:</th><td align='left'><input type='text' name='quantity' size='10'></td></tr>";
+	echo "<input type='hidden' name='MAX_FILE_SIZE'  value='204800'>";
+	echo "<tr><th align='left'>Picture:</th><td align='left'><input type='file' name='picture'></td></tr>";
+	echo "</table>";
+  	echo "<br><input type='submit' value='Submit'/><br>";
 
+   	echo "<input type='hidden' name='content' value='addproduct'>";
+   	echo "</form>";
 
-	$query = "SELECT catid, name FROM categories";
-$result = mysqli_query($dbc, $query);
-while($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
-{
-	$catid = $row['catid'];
-	$name = $row['name'];
-	echo "<option value='$catid'> $name</option>";
-}
-		echo "</select><br>";
-	echo "<label>Description: &nbsp; &nbsp;&nbsp;</label><input type='text' size='40' name='desc'><br>";
-	echo "<label>Price: &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input type='text' size='10' name='price'><br>";
-	echo "<label>Quantity: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input type='text'size='10' name='quantity'><br>";
-	echo "<input type='hidden' name='MAX_FILE_SIZE' value='1024000'>";
-	echo "<label>Picture: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input type='file' name='picture'><br>";
-
-
-
-	echo "</form>";
+	
 }
 
 

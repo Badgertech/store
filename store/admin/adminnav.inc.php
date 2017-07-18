@@ -7,7 +7,7 @@
 	echo "<label>Browse Products:  </label>";
 	echo "<select name='cat'><option>Select</option>";
 
-	$query = "SELECT catid, name FROM categories";
+	$query = "SELECT catid, name FROM categories ORDER BY name ASC";
 $result = mysqli_query($dbc, $query);
 while($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
 {
@@ -16,6 +16,7 @@ while($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
 	echo "<option value='$catid'> $name</option>";
 }
 		echo "</select>";
+		echo "<input type='hidden' name='name' value='$name'>";
 	echo "<input name='goButton' type='submit' value='Browse'>";
 	echo "<input type='hidden' name='content' value='editproducts'>";
 	echo "</form></td></tr>";

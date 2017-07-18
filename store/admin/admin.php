@@ -6,7 +6,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Sett Store</title>
 </head>
-<?php include "../mylibrary/login.php"; ?>
+<?php 
+  include "../mylibrary/login.php"; 
+  include "../mylibrary/getThumb.php";
+  include "../mylibrary/showproducts.php";
+  ?>
 <body>
 <div id="wrapper">
 <table width="100%" border="0" border-collapse="collapse">
