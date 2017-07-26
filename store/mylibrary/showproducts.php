@@ -1,19 +1,21 @@
 <?php
-	function showproducts($catid, $page, $currentpage, $newpage)
+function showproducts($catid, $page, $currentpage, $newpage)
 	{
+		include "login.php";
 		$query = "SELECT count(prodid) FROM products WHERE catid = $catid";
 		$result = mysqli_query($dbc, $query);
 		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 		if ($row[0] == 0)
 		{
-			echo "<h2>Sorry, there are no products in this category</h2><hr>";
+			echo "<h4 style='color:green;'>Sorry, there are no products in this category</h4>";
 		}else{
-			echo "<h2>Product Page</h2><hr>";
+			
 			$thispage = $page;
 			$totalrecords = $row[0];
 			$recordsperpage = 5;
 			$offset = ($thispage - 1) * $recordsperpage;
-			$totalpages = ceil($totalrecords/$recordsperpage);
+			$offset = ($thispage - 1) * $recordsperpage;
+			$totalpages = ceil($totalrecords / $recordsperpage);
 			echo "<table style='width:100%; cellpadding:1; border=1'>";
 			echo "<tr><th>Image</th><th>Product</th><th>Price</th><th>In Stock</th><th>Special</th></tr>";
 			$query = "SELECT * FROM products WHERE catid=$catid LIMIT $offset, $recordsperpage";
@@ -36,8 +38,6 @@
 			echo "</table>";
 		}
 	}
-
-
 
 
 ?>

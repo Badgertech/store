@@ -1,38 +1,43 @@
-<?php function getThumb($Original)
-{
-	if(!Orginal['name']){
+<?php 
+function getThumb($Original){
+	if(!$Original['name'])
+	{
 		//no image supplied
-		$TempName = "images/noimage.jpg";
+		$TempName = "../images/noimage.jpg";
 		$TempFile = fopen($TempName, "r");
 		$thumbnail = fread($TempFile, fileSize($TempName));
-	} else {
+	} else
+	{
 		//get image
-		$Picture = file_get_contents($Orginal['tmp_name']);
+		$Picture = file_get_contents($Original['tmp_name']);
 
 		//create image
 		$SourceImage = imagecreatefromstring($Picture);
-		if(!SourceImage)
+		if(!$SourceImage)
 		{
 			//not a valid image
-			echo "Not a valid image file";
-			$TempName = "images/noimage.jpg";
+			echo "<h2>Not a valid Image</h2><hr>";
+			$TempName = "../images/noimage.jpg";
 			$TempFile = fopen($TempName, "r");
 			$thumbnail = fread($TempFile, fileSize($TempName));
-		} else {
+		} else
+		{
 			//create thumbnail
 			$width = imageSX($SourceImage);
 			$height = imageSY($SourceImage);
 			$newThumb = imagecreatetruecolor(80, 60);
-			// resize image to 80 x 60
+			//resize image to 80 x 60
 			$result = imagecopyresampled($newThumb, $SourceImage, 0, 0, 0, 0, 80, 60, $width, $height);
-			// move image to varialbe
+			//move image to variable
 			ob_start();
 			imageJPEG($newThumb);
 			$thumbnail = ob_get_contents();
 			ob_end_clean();
-
 		}
 	}
 	return $thumbnail;
 }
+
+
+
 ?>
