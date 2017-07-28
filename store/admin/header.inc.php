@@ -1,1 +1,0 @@
-<h2>Welcome to the Sett Store --7-27-checkout</h2>
