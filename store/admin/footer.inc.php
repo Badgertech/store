@@ -1,1 +1,1 @@
-<center><a mailto="robjbadger@gmail.com">Contact us</a>  | &copy; 2017 BadgerTech </center>
+<center><a mailto="robjbadger@gmail.com">Contact us</a>  | &copy; <?php echo date("Y");?>BadgerTech </center>

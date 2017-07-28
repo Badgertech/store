@@ -1,5 +1,10 @@
-<h2>Status</h2><hr>
+
 <?php
+if(!isset($_SESSION['store_admin'])){
+	echo " ";
+}else{
+	$userid = $_SESSION['store_admin'];
+echo	"<h2>Status</h2><hr>";
 $query = "SELECT prodid FROM products";
 $result= mysqli_query($dbc, $query);
 $totprods = mysqli_num_rows($result);
@@ -12,5 +17,5 @@ $query = "SELECT orderid FROM orders WHERE status = 'pending'";
 $result = mysqli_query($dbc, $query);
 $pending = mysqli_num_rows($result);
 echo "Pending Orders: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  $pending<br>";
-
+}
 ?>

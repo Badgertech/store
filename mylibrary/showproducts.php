@@ -1,6 +1,7 @@
 <?php
 	function showproducts($catid, $page, $currentpage, $newpage)
 	{
+		include "login.php";
 		$query = "SELECT count(prodid) FROM products WHERE catid = $catid";
 		$result = mysqli_query($dbc, $query);
 		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);

@@ -1,1 +1,1 @@
-<h2>Welcome to the Sett Store</h2>
+<h2>Welcome to the Sett Store --7-27-checkout</h2>

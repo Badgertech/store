@@ -8,6 +8,8 @@ $name = $row['name'];
 echo "<h2>Welcome $name<h2><hr>";
 $date = date("l, F j, Y");
 echo "<h3>Today's date is $date</h3>";
+date_default_timezone_set("America/Chicago");
+echo "<h3>The time is " . date("h:i a")."</h3>";
 echo "<h3>Admin Messages:</h3>";
 if(is_readable('../mylibrary/dailymessages.txt'))
 {

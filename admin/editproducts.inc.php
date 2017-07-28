@@ -4,7 +4,6 @@ if(!isset($_SESSION['store_admin'])){
 	echo "<a href='admin.php'>Please Login</a>";
 
 }else{
-
 echo "<h2>Click on Product to edit it.</h2><hr>";
 $catid = $_GET['cat'];
 if(!isset($_GET['page']))
@@ -32,5 +31,5 @@ if(!isset($_GET['page']))
 	if($totalpages > 1)
 		echo $prevpage." ".$nextpage;
 }
-}
+
 ?>

@@ -1,13 +1,15 @@
 body{
 	width:100%;
 	margin:0px auto;
-	background-color:#444;
+	background-color:#223850;
 }
 #wrapper{
 	    max-width: 1200px;
     margin: auto;
     background: white;
     padding: 10px;
+    border-radius:4px 5px;
+    box-shadow:5px 2px  18px 5px #cc0000;
 }
 a{
 	text-decoration:none;
@@ -39,6 +41,13 @@ a:hover{
 
 border-left:1px solid #444;
 border-right:1px solid #444;
+}
+#nav table{
+    width:100%; cellpadding:2; text-align:left; padding-left:3px;
+    border:0px;
+}
+#nav th, td{
+    border:0px;
 }
 #main{
 	padding-left:2px;
@@ -109,4 +118,14 @@ border-right:1px solid #444;
 .fa {
     margin-left: -12px;
     margin-right: 8px;
+}
+#sprod{
+    width:90%;
+    margin:0px auto;
+    border:1px solid #444;
+    border-collapse:collapse;
+    text-align:center;
+}
+#sprod td, th{
+    border:1px solid #444;
 }
